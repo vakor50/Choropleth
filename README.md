@@ -2,17 +2,12 @@
 
 In order to locally run project so .csv files or other files can be loaded in, run:
 
-python -m SimpleHTTPServer 8888 &
+Navigate to the directory of the project and run the following in terminal
 
-in terminal
+python -m SimpleHTTPServer 
 
-Then if file is:
+(8888 &)
 
-file:///Users/Nitish/Documents/Vir/Choropleth/index.html
+Then load the project at
 
-load it as
-
-http://localhost:8888/Documents/Vir/Choropleth/index.html
-
-
-
+http://localhost:8000

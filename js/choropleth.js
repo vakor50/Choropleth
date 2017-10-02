@@ -32,11 +32,9 @@ function buildMap(n) {
 		var filename = "population.csv";
 		var isTSV = false;
 		var xDomain = [100, 1000000];
-		var colorDomain = [0, 10000, 50000, 100000, 200000, 500000, 1000000];
+		var colorDomain = [0, 50000, 100000, 200000, 500000, 1000000];
 		var keyText = "population rate";
-	}
-
-	console.log(1);
+	} 
 
 	var svg = d3.select("svg"),
 		width = +svg.attr("width"),
@@ -51,29 +49,24 @@ function buildMap(n) {
 			.domain(xDomain) // sets the pixel length of the key
 			.rangeRound([600, 860]);
 
-	console.log(2);
-
 	// sets the color bar length
 	var color = d3.scaleThreshold()
 			// .domain(d3.range(2, 10)) // from 2% to 9% < // sets length to 20
 			.domain(colorDomain) 
 			.range(d3.schemeBlues[colorDomain.length]);
 
-	console.log(2.1);
 	// sets the location of the key
 	// increasing the translate y-value moves it down the screen
 	var g = svg.append("g")
 			.attr("class", "key")
 			.attr("transform", "translate(0,40)");
 
-	console.log(2.2);
 
 	g.selectAll("rect")
 		.data(color.range().map(function(d) {
 				d = color.invertExtent(d);
 				if (d[0] == null) d[0] = x.domain()[0];
 				if (d[1] == null) d[1] = x.domain()[1];
-				console.log(d);
 				return d;
 			}))
 		.enter().append("rect")
@@ -81,8 +74,6 @@ function buildMap(n) {
 			.attr("x", function(d) { return x(d[0]); })
 			.attr("width", function(d) { return x(d[1]) - x(d[0]); })
 			.attr("fill", function(d) { return color(d[0]); });
-
-	console.log(3);
 
 	g.append("text")
 			.attr("class", "caption")
@@ -165,13 +156,21 @@ function buildMap(n) {
 
 
 $(".obesity").click(function() {
+	console.log("obesity");
 	$(".usa").empty();
 	buildMap(0);
 });
 
 $(".unemployment").click(function() {
+	console.log("unemployment");
 	$(".usa").empty();
 	buildMap(1);
+});
+
+$(".population").click(function() {
+	console.log("population");
+	$(".usa").empty();
+	buildMap(2);
 });
 
 $(document).ready(function() {

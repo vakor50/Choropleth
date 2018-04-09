@@ -1,13 +1,7 @@
-# Load TSV
+# Data Visualization
 
-In order to locally run project so .csv files or other files can be loaded in, run:
+## Purpose
+Use d3.js to visualize different datasets about the US by county such as Unemployment, Obesity, Population
 
-Navigate to the directory of the project and run the following in terminal
-
-python -m SimpleHTTPServer 
-
-(8888 &)
-
-Then load the project at
-
-http://localhost:8000
+## Run the site
+Must be hosted in order to load data from a file
